@@ -6,7 +6,7 @@
 3. [¿Por qué elegir nuestra solución?](#-por-qué-elegir-nuestra-solución)
 4. [Tecnologías y Requerimientos No Funcionales](#️-tecnologías-y-requerimientos-no-funcionales)
 5. [Justificación de la arquitectura](#️-justificación-de-la-arquitectura)
-
+6. [Arquitectura AWS](#️-arquitectura-aws)
 ---
 
 ## Contexto de la empresa
@@ -84,3 +84,8 @@ Se eligió una **arquitectura híbrida Serverless + Event-Driven**, apoyada en u
 - Optimizar costos al ejecutarse solo durante los turnos operativos  
 
 Este enfoque asegura alta disponibilidad, escalabilidad inmediata y confiabilidad de la información, minimizando riesgos económicos y operativos para Consersa.
+
+---
+
+## Arquitectura AWS
+![Arquitectura AWS del sistema](images/DIAGRAMA AWS.png)
