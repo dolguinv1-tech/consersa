@@ -20,7 +20,7 @@ La valorización consiste en ingresar los metrados al sistema, los cuales se cal
 
 ## Problema identificado
 
-El sistema de gestión de órdenes y valorizaciones utilizado por Consersa presenta problemas operativos que afectan directamente la facturación. El sistema  es usado por un grupo de 4 personas, en 2 turnos diferentes, 2 personas en la mañana (7 a.m. -  3 p.m) y las otras 2 personas en la tarde (3 p.m - 11 p.m), en cada turno uno se encarga del Call Center de Consersa y el otro se encarga de Valorizar. La duplicidad de órdenes de servicio ocurre cuando el sistema  guarda 2 veces o elimina una orden, por ejemplo; una orden de servicio es generada en un turno, luego valorizada y los trabajadores del otro turno al abrir el sistema podrían eliminar o modificar datos de la orden ya valorizada, generando la problemática.
+El sistema de gestión de órdenes y valorizaciones utilizado por Consersa presenta problemas operativos que afectan directamente la facturación. El sistema  es usado por un grupo de 100 personas, en 2 turnos diferentes, en la mañana (7 a.m. -  3 p.m) y otro grupo en la tarde (3 p.m - 11 p.m), en cada turno se encargan del Call Center de Consersa y se encargan de Valorizar. La duplicidad de órdenes de servicio ocurre cuando el sistema  guarda 2 veces o elimina una orden, por ejemplo; una orden de servicio es generada en un turno, luego valorizada y los trabajadores del otro turno al abrir el sistema podrían eliminar o modificar datos de la orden ya valorizada, generando la problemática.
 
 ---
 
@@ -49,14 +49,14 @@ A continuación se detallan los atributos de calidad, requerimientos técnicos y
 
 | ID | Atributos de calidad | Requerimiento No Funcional | Tecnologías |
 | :--- | :--- | :--- | :--- |
-| **RNF 01** | Accesibilidad | El sistema debe permitir hasta 10 sesiones concurrentes. | AWS Cognito + Amazon API Gateway |
+| **RNF 01** | Accesibilidad | El sistema debe permitir hasta 100 sesiones concurrentes. | AWS Cognito + Amazon API Gateway |
 | **RNF 02** | Accesibilidad | El sistema debe mostrar los cambios de estado de una orden en un tiempo máximo de 2 segundos. | AWS AppSync (GraphQL) + Amazon SNS |
 | **RNF 03** | Accesibilidad | El sistema debe responder las consultas de órdenes en un tiempo máximo de 2 segundos. | AWS Lambda + Amazon DynamoDB (DAX) |
 | **RNF 04** | Accesibilidad | El sistema debe estar disponible durante los turnos operativos (7:00 a.m. - 11:00 p.m.) con una disponibilidad mínima del 99.5% mensual. | AWS Global Accelerator + Amazon Route 53 |
 | **RNF 05** | Accesibilidad | El sistema debe permitir el acceso continuo a los trabajadores autorizados aun cuando se presenten picos de carga de hasta 200 órdenes diarias. | Amazon SQS (FIFO) + AWS Lambda |
 | **RNF 06** | Accesibilidad | El sistema debe permitir el registro y visualización de una orden en un tiempo máximo de 3 segundos desde su creación. | AWS API Gateway + AWS Lambda |
 | **RNF 07** | Seguridad | El sistema deberá implementar un control de acceso basado en roles, evitando la anulación o eliminación de órdenes de servicio por usuarios no autorizados. | Azure AD B2C |
-| **RNF 08** | Seguridad | El sistema debe implementar una autenticación multifactor (MFA) para los 4 operarios del sistema. | AWS Cognito MFA |
+| **RNF 08** | Seguridad | El sistema debe implementar una autenticación multifactor (MFA) para los operarios del sistema. | AWS Cognito MFA |
 | **RNF 09** | Seguridad | El sistema deberá evitar la duplicidad de órdenes y valorizaciones, asegurando que una misma operación registrada más de una vez genere un único registro, logrando una tasa de duplicidad del 0%, incluso ante hasta 1,000,000 de intentos repetidos para una misma orden. | AWS EventBridge |
 | **RNF 10** | Seguridad | El sistema deberá registrar el 100% de las acciones críticas (crear, guardar, anular, valorizar) con usuario, fecha/hora y detalle de cambio para auditoría. | Event Sourcing |
 | **RNF 11** | Fiabilidad | El sistema deberá realizar copias de seguridad automáticas diarias de la base de datos, con retención mínima de 30 días. | Amazon RDS Automated Backups |
