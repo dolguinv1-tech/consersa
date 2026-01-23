@@ -55,7 +55,7 @@ A continuación se detallan los atributos de calidad, requerimientos técnicos y
 | **RNF 04** | Accesibilidad | El sistema debe estar disponible durante los turnos operativos (7:00 a.m. - 11:00 p.m.) con una disponibilidad mínima del 99.5% mensual. | AWS Global Accelerator + Amazon Route 53 |
 | **RNF 05** | Accesibilidad | El sistema debe permitir el acceso continuo a los trabajadores autorizados aun cuando se presenten picos de carga de hasta 200 órdenes diarias. | Amazon SQS (FIFO) + AWS Lambda |
 | **RNF 06** | Accesibilidad | El sistema debe permitir el registro y visualización de una orden en un tiempo máximo de 3 segundos desde su creación. | AWS API Gateway + AWS Lambda |
-| **RNF 07** | Seguridad | El sistema deberá implementar un control de acceso basado en roles, evitando la anulación o eliminación de órdenes de servicio por usuarios no autorizados. | Azure AD B2C |
+| **RNF 07** | Seguridad | El sistema deberá implementar un control de acceso basado en roles, evitando la anulación o eliminación de órdenes de servicio por usuarios no autorizados. | Amazon cognito |
 | **RNF 08** | Seguridad | El sistema debe implementar una autenticación multifactor (MFA) para los operarios del sistema. | AWS Cognito MFA |
 | **RNF 09** | Seguridad | El sistema deberá evitar la duplicidad de órdenes y valorizaciones, asegurando que una misma operación registrada más de una vez genere un único registro, logrando una tasa de duplicidad del 0%, incluso ante hasta 1,000,000 de intentos repetidos para una misma orden. | AWS EventBridge |
 | **RNF 10** | Seguridad | El sistema deberá registrar el 100% de las acciones críticas (crear, guardar, anular, valorizar) con usuario, fecha/hora y detalle de cambio para auditoría. | Event Sourcing |
